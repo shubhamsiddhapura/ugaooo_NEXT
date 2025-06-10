@@ -1,5 +1,5 @@
-// pages/api/product/getAllPlantProduct.js
-import { getAllProductsBySection } from "../../../Controller/Section";
+
+const { getAllProductsBySection } = require("../../Controller/Section");
 
 export default function handler(req, res) {
   if (req.method === "POST") {
