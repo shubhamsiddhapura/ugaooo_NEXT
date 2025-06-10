@@ -16,7 +16,7 @@ const Login = () => {
     setErrorMsg("");
 
     try {
-      const response = await axios.post("http://localhost:3000/api/section/getSectionWithSubSections", {
+      const response = await axios.post("http://localhost:3000/api/Auth/login", {
         email,
         password,
       });

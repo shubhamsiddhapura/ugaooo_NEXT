@@ -16,4 +16,5 @@ const subsectionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Subsection", subsectionSchema);
+// Prevent OverwriteModelError in development
+module.exports = mongoose.models.Subsection || mongoose.model("Subsection", subsectionSchema);

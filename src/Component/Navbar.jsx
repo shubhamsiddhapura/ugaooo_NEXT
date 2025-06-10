@@ -12,12 +12,13 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  
 
   const router = useRouter();
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/section/getSectionWithSubSections")
+      .get("http://localhost:3000/api/product/getSectionWithSubSections")
       .then((response) => {
         setSections(response.data.data);
         setLoading(false);

@@ -5,16 +5,16 @@ const categorySchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     subsection: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Subsection",
-      required: true
+      required: true,
     },
-    
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Category", categorySchema);
+// Prevent OverwriteModelError during hot reload in Next.js
+module.exports = mongoose.models.Category || mongoose.model("Category", categorySchema);

@@ -5,28 +5,32 @@ const productSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     imageUrl: {
       type: String,
-      default: ""
+      default: "",
     },
     price: {
       type: Number,
-      required: true
+      required: true,
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
-      required: true
+      required: true,
     },
-    categoryName: { type: String, required: true },
+    categoryName: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Product", productSchema);
+// Prevent OverwriteModelError during Next.js hot reload
+module.exports = mongoose.models.Product || mongoose.model("Product", productSchema);

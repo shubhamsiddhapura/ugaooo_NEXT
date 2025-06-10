@@ -63,8 +63,7 @@ exports.deleteSection = async (req, res) => {
 };
 exports.getAllSectionsWithSubsections = async (req, res) => {
   try {
-    const sections = await Section.find(); 
-
+     const sections = await Section.find();
     const data = await Promise.all(
       sections.map(async (section) => {
         const subsections = await Subsection.find({ section: section._id }).select("_id name");

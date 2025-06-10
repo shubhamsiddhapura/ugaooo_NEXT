@@ -12,4 +12,5 @@ const sectionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Section", sectionSchema);
+// Prevent OverwriteModelError in development
+module.exports = mongoose.models.Section || mongoose.model("Section", sectionSchema);
