@@ -17,8 +17,7 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    axios
-      .get("/api/getSectionWithSubSections")
+    axios.get("/api/getSectionWithSubSections")
       .then((response) => {
         setSections(response.data.data);
         setLoading(false);
