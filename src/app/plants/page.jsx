@@ -11,7 +11,7 @@ const Plants = () => {
   useEffect(() => {
     const fetchPlantProducts = async () => {
       try {
-        const response = await axios.post("http://localhost:3000/api/section/getAllPlantProdutct", {
+        const response = await axios.post("/api/product/getAllPlantProdutct", {
           name: "plants",
         });
         setProducts(response.data.products);

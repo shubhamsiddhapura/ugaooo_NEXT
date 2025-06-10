@@ -18,7 +18,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/product/getSectionWithSubSections")
+      .get("/api/product/getSectionWithSubSections")
       .then((response) => {
         setSections(response.data.data);
         setLoading(false);

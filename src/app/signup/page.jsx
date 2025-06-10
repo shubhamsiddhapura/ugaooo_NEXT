@@ -29,7 +29,7 @@ const Signup = () => {
     setErrorMsg("");
 
     try {
-      await axios.post("http://localhost:3000/api/Auth/register", {
+      await axios.post("/api/Auth/register", {
         Firstname: formData.firstName,
         Lastname: formData.lastName,
         email: formData.email,
