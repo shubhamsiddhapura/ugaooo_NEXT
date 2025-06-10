@@ -18,7 +18,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get("/api/product/getSectionWithSubSections")
+      .get("https://ugaoo-next-js.vercel.app/api/product/getSectionWithSubSections")
       .then((response) => {
         setSections(response.data.data);
         setLoading(false);

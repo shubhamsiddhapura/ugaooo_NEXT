@@ -11,7 +11,7 @@ const Plants = () => {
   useEffect(() => {
     const fetchPlantProducts = async () => {
       try {
-        const response = await axios.post("/api/product/getAllPlantProdutct", {
+        const response = await axios.post("https://ugaoo-next-js.vercel.app/api/product/getAllPlantProdutct", {
           name: "plants",
         });
         setProducts(response.data.products);

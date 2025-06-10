@@ -16,7 +16,7 @@ const Login = () => {
     setErrorMsg("");
 
     try {
-      const response = await axios.post("http://localhost:3000/api/Auth/login", {
+      const response = await axios.post("https://ugaoo-next-js.vercel.app/api/Auth/login", {
         email,
         password,
       });
