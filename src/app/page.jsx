@@ -5,23 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Home = () => {
- const icons = [
-  { src: "/1.avif", label: "Buy 3 Get 1" },
-  { src: "/2._Easy_to_Care.avif", label: "XL Plants" },
-  { src: "/3._XL_Plants.avif", label: "Ceramic Pots" },
-  { src: "/4._Ceramic_Pots.avif", label: "Easy to Care" },
-  { src: "/6._Fertilizers.avif", label: "Vegetable Seeds" },
-];
-const mainBanners = [
-  "/banner3.webp",
-  "/banners-01_0033f401-3eeb-4c14-963c-38852be82fc9.webp",
-  "/Environment_day_banner-01.webp",
-];
+  const icons = [
+    { src: "/1.avif", label: "Buy 3 Get 1" },
+    { src: "/2._Easy_to_Care.avif", label: "XL Plants" },
+    { src: "/3._XL_Plants.avif", label: "Ceramic Pots" },
+    { src: "/4._Ceramic_Pots.avif", label: "Easy to Care" },
+    { src: "/6._Fertilizers.avif", label: "Vegetable Seeds" },
+  ];
 
-const safeBanners = [
-  "/Safe_Delivery_Strip_Banner.webp",
-  "/Self_Watering_Strip_Banner.webp",
-];
+  const mainBanners = [
+    "/banner3.webp",
+    "/banners-01_0033f401-3eeb-4c14-963c-38852be82fc9.webp",
+    "/Environment_day_banner-01.webp",
+  ];
+
+  const safeBanners = [
+    "/Safe_Delivery_Strip_Banner.webp",
+    "/Self_Watering_Strip_Banner.webp",
+  ];
 
   const [currentMain, setCurrentMain] = useState(0);
   const [currentSafe, setCurrentSafe] = useState(0);
@@ -42,24 +43,22 @@ const safeBanners = [
 
   return (
     <div className="bg-green-50">
-      {/* Top Banner */}
       <img
         src="/Desktop_Offer_Strip_Banner-07.webp"
         alt="Top Offer Banner"
-        className="w-full h-auto"
+        className="object-cover w-full h-auto"
       />
 
-      {/* Icons */}
-      <div className="grid grid-cols-3 md:flex flex-wrap justify-center gap-6 py-7 px-4">
+      <div className="grid flex-wrap justify-center grid-cols-2 gap-4 px-3 py-6 sm:grid-cols-3 md:flex sm:gap-6 sm:px-4">
         {icons.map((item, index) => (
           <Link key={index} href="#">
-            <div className="flex flex-col items-center space-y-2 w-28 sm:w-36">
+            <div className="flex flex-col items-center w-24 space-y-2 sm:w-32 md:w-36">
               <img
                 src={item.src}
                 alt={item.label}
-                className="h-24 sm:h-36 object-contain"
+                className="object-contain h-20 sm:h-28 md:h-36"
               />
-              <p className="text-center text-gray-700 text-sm sm:text-base font-medium">
+              <p className="text-xs font-medium text-center text-gray-700 sm:text-sm md:text-base">
                 {item.label}
               </p>
             </div>
@@ -67,8 +66,7 @@ const safeBanners = [
         ))}
       </div>
 
-      {/* Rotating Main Banner */}
-      <div className="w-full h-52 sm:h-64 md:h-72 relative overflow-hidden">
+      <div className="relative w-full overflow-hidden h-44 sm:h-60 md:h-72">
         {mainBanners.map((img, index) => (
           <img
             key={index}
@@ -80,24 +78,26 @@ const safeBanners = [
           />
         ))}
       </div>
-
-      {/* Essentials Section */}
-      <h1 className="uppercase text-green-800 text-center text-3xl sm:text-4xl pt-8 pb-4">
+      <h1 className="pt-6 pb-3 text-2xl text-center text-green-800 uppercase sm:text-3xl md:text-4xl sm:pt-8">
         Plant Parent Essentials
       </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-4 sm:px-8 pb-6">
+      <div className="grid grid-cols-2 gap-3 px-3 pb-6 sm:grid-cols-4 sm:gap-4 sm:px-8">
         {["/Plant_Care.webp", "/Plants.webp", "/Pots_Planters.webp", "/Seeds.webp"].map(
           (img, index) => (
-            <img key={index} src={img} alt={`essential-${index}`} className="w-full h-auto object-contain" />
+            <img
+              key={index}
+              src={img}
+              alt={`essential-${index}`}
+              className="object-contain w-full h-auto"
+            />
           )
         )}
       </div>
 
-      {/* Why Ugaoo Banner */}
-      <h1 className="uppercase text-green-800 text-center text-3xl sm:text-4xl pt-8 pb-4">
+      <h1 className="pt-6 pb-3 text-2xl text-center text-green-800 uppercase sm:text-3xl md:text-4xl sm:pt-8">
         Why Ugaoo?
       </h1>
-      <div className="w-full mt-3 h-36 sm:h-48 md:h-52 relative overflow-hidden shadow-md">
+      <div className="relative w-full overflow-hidden shadow-md h-28 sm:h-40 md:h-52">
         {safeBanners.map((img, index) => (
           <img
             key={index}
@@ -110,11 +110,10 @@ const safeBanners = [
         ))}
       </div>
 
-      {/* About Section */}
-      <h1 className="uppercase text-green-800 text-center text-3xl sm:text-4xl pt-8 pb-2">
+      <h1 className="pt-6 pb-2 text-2xl text-center text-green-800 uppercase sm:text-3xl md:text-4xl sm:pt-8">
         About Ugaoo
       </h1>
-      <p className="max-w-5xl mx-auto text-center text-gray-700 text-sm sm:text-base pt-3 pb-6 leading-relaxed px-4">
+      <p className="max-w-5xl px-4 pt-2 pb-6 mx-auto text-sm leading-relaxed text-center text-gray-700 sm:text-base">
         As India’s largest and most trusted online plant nursery and gardening store, Ugaoo is here to bring you only the best for all your gardening and plant needs. From exotic indoor plants for your homes to flowering plants and succulents for your ornamental gardens, we bring you all the plants you may want! We also specialize in the highest quality seeds, organic fertilizers, premium pots and planters, and garden tools for effective plant care. So, turn a new leaf and start your gardening journey with Ugaoo!
       </p>
     </div>
