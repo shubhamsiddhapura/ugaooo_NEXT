@@ -49,7 +49,6 @@ exports.getAllSections = async () => {
   }
 };
 
-// Delete section by ID
 exports.deleteSection = async (id) => {
   try {
     const section = await Section.findByIdAndDelete(id);
@@ -61,7 +60,6 @@ exports.deleteSection = async (id) => {
   }
 };
 
-// Get all sections with their subsections
 exports.getAllSectionsWithSubsections = async () => {
   try {
     const sections = await Section.find();
@@ -87,7 +85,6 @@ exports.getAllSectionsWithSubsections = async () => {
   }
 };
 
-// Get all products by section name
 exports.getAllProductsBySection = async (name) => {
   try {
     if (!name) return { success: false, status: 400, message: "Section name is required" };
@@ -95,7 +92,7 @@ exports.getAllProductsBySection = async (name) => {
     const section = await Section.findOne({ name: new RegExp(`^${name}$`, "i") });
     if (!section) return { success: false, status: 404, message: "Section not found" };
 
-    const subsections = await Subsection.find({ section: section._id });
+    const subsections = await Subsection.find({ section:section._id });
     const subsectionIds = subsections.map((sub) => sub._id);
 
     const categories = await Category.find({ subsection: { $in: subsectionIds } });
