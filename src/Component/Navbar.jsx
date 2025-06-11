@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CgProfile } from "react-icons/cg";
