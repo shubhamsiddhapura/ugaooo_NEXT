@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import axios from "../../lib/axiosinstance"
+
 const Signup = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({

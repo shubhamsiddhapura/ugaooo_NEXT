@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CgProfile } from "react-icons/cg";
 import { HiMenu, HiX } from "react-icons/hi";
-import axios from "../lib/axiosinstance"
 
 const Navbar = () => {
   const [sections, setSections] = useState([]);

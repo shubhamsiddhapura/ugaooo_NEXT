@@ -1,5 +1,5 @@
-import dbConnect from '../../lib/Database';
-import { getAllProductsBySection } from "../../Controller/Section";
+import dbConnect from '../../../lib/Database';
+import { getAllProductsBySection } from "../../../Controller/Section";
 
 export default async function handler(req, res) {
   try {

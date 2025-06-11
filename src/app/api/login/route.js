@@ -1,5 +1,5 @@
-const connectDB = require("../../lib/Database");
-const { Login } = require("../../Controller/Auth");
+const connectDB = require("../../../lib/Database");
+const { Login } = require("../../../Controller/Auth");
 
 export default async function handler(req, res) {
   await connectDB(); // 🧠 Ensure DB is connected

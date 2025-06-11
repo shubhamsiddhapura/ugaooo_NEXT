@@ -1,8 +1,8 @@
 "use client";
-import axios from "../../lib/axiosinstance"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";  // Put bg.jpg in public/
+import Link from "next/link";
+import axios from "axios";  // Put bg.jpg in public/
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -38,29 +38,29 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
+      className="relative flex items-center justify-center min-h-screen bg-center bg-cover"
       style={{ backgroundImage: `url('/bg.jpg')` }}
     >
       <div className="absolute inset-0 bg-black opacity-40 backdrop-blur-sm"></div>
 
-      <div className="rounded-lg max-w-md w-full bg-black/50 bg-opacity-90 p-8 shadow-lg backdrop-blur-sm relative z-10">
-        <h1 className="text-3xl font-bold text-green-400 mb-3">LOGIN</h1>
-        <p className="mb-6 text-center text-green-400 text-xl">
+      <div className="relative z-10 w-full max-w-md p-8 rounded-lg shadow-lg bg-black/50 bg-opacity-90 backdrop-blur-sm">
+        <h1 className="mb-3 text-3xl font-bold text-green-400">LOGIN</h1>
+        <p className="mb-6 text-xl text-center text-green-400">
           Don’t have an account?{" "}
-          <Link href="/signup" className="text-green-300 font-semibold hover:underline">
+          <Link href="/signup" className="font-semibold text-green-300 hover:underline">
             Create Account
           </Link>
         </p>
 
         {errorMsg && (
-          <div className="bg-green-100 border border-green-400 text-green-400 px-4 py-3 rounded mb-6 text-center">
+          <div className="px-4 py-3 mb-6 text-center text-green-400 bg-green-100 border border-green-400 rounded">
             {errorMsg}
           </div>
         )}
 
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label className="block text-green-500 mb-2 font-medium" htmlFor="email">
+            <label className="block mb-2 font-medium text-green-500" htmlFor="email">
               Email Address
             </label>
             <input
@@ -70,12 +70,12 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="you@example.com"
-              className="w-full border border-green-300 text-white rounded px-4 py-3 placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 text-white placeholder-green-400 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
           <div>
-            <label className="block text-green-500 mb-2 font-medium" htmlFor="password">
+            <label className="block mb-2 font-medium text-green-500" htmlFor="password">
               Password
             </label>
             <input
@@ -85,13 +85,13 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder="********"
-              className="w-full border border-green-300 text-white rounded px-4 py-3 placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 text-white placeholder-green-400 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-green-700 text-white font-semibold py-3 rounded hover:bg-green-800 transition"
+            className="w-full py-3 font-semibold text-white transition bg-green-700 rounded hover:bg-green-800"
           >
             Login
           </button>

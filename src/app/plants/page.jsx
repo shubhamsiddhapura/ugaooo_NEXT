@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import axios from "axios";
 import Image from "next/image";
 import ProductCard from "../../Component/Card";
-import axios from "../../lib/axiosinstance"
 
 const Plants = () => {
   const [products, setProducts] = useState([]);

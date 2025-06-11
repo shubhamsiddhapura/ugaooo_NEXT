@@ -3,67 +3,68 @@ const Subsection = require("../Model/SubSection");
 const Category = require("../Model/Category");
 const Product = require("../Model/Product");
 
-exports.createSection = async (req, res) => {
+// Create a new section
+exports.createSection = async (name) => {
   try {
-    const { name } = req.body;
-    const existing = await Section.findOne({name});
-    if (existing) return res.status(400).json({ message: "Section already exists" });
+    const existing = await Section.findOne({ name });
+    if (existing) return { success: false, status: 400, message: "Section already exists" };
 
     const section = await Section.create({ name });
-    res.status(201).json(section);
+    return { success: true, status: 201, data: section };
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return { success: false, status: 500, message: err.message };
   }
 };
 
-exports.updateSection = async (req, res) => {
+// Update a section
+exports.updateSection = async (oldName, newName) => {
   try {
-    const { oldName, newName } = req.body;
-
     if (!oldName || !newName) {
-      return res.status(400).json({ message: "Old name and new name are required" });
+      return { success: false, status: 400, message: "Old name and new name are required" };
     }
 
-    
     const updatedSection = await Section.findOneAndUpdate(
       { name: oldName },
       { name: newName },
-      { new: true } 
+      { new: true }
     );
 
     if (!updatedSection) {
-      return res.status(404).json({ message: "Section not found" });
+      return { success: false, status: 404, message: "Section not found" };
     }
 
-    res.status(200).json(updatedSection);
+    return { success: true, status: 200, data: updatedSection };
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return { success: false, status: 500, message: err.message };
   }
 };
 
-exports.getAllSections = async (req, res) => {
+// Get all sections
+exports.getAllSections = async () => {
   try {
     const sections = await Section.find();
-    res.status(200).json(sections);
+    return { success: true, status: 200, data: sections };
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return { success: false, status: 500, message: err.message };
   }
 };
-exports.deleteSection = async (req, res) => {
-  try {
-    const { id } = req.params;
 
+// Delete section by ID
+exports.deleteSection = async (id) => {
+  try {
     const section = await Section.findByIdAndDelete(id);
-    if (!section) return res.status(404).json({ message: "Section not found" });
+    if (!section) return { success: false, status: 404, message: "Section not found" };
 
-    res.status(200).json({ message: "Section deleted successfully" });
+    return { success: true, status: 200, message: "Section deleted successfully" };
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return { success: false, status: 500, message: err.message };
   }
 };
-exports.getAllSectionsWithSubsections = async (req, res) => {
+
+// Get all sections with their subsections
+exports.getAllSectionsWithSubsections = async () => {
   try {
-     const sections = await Section.find();
+    const sections = await Section.find();
     const data = await Promise.all(
       sections.map(async (section) => {
         const subsections = await Subsection.find({ section: section._id }).select("_id name");
@@ -79,26 +80,20 @@ exports.getAllSectionsWithSubsections = async (req, res) => {
       })
     );
 
-    res.status(200).json({ success: true, data });
+    return { success: true, status: 200, data };
   } catch (err) {
     console.error("Error fetching sections with subsections:", err);
-    res.status(500).json({ success: false, error: err.message });
+    return { success: false, status: 500, message: err.message };
   }
 };
 
-
-exports.getAllProductsBySection = async (req, res) => {
+// Get all products by section name
+exports.getAllProductsBySection = async (name) => {
   try {
-    const { name } = req.body;  
-
-    if (!name) {
-      return res.status(400).json({ message: "Section name is required" });
-    }
+    if (!name) return { success: false, status: 400, message: "Section name is required" };
 
     const section = await Section.findOne({ name: new RegExp(`^${name}$`, "i") });
-    if (!section) {
-      return res.status(404).json({ message: "Section not found" });
-    }
+    if (!section) return { success: false, status: 404, message: "Section not found" };
 
     const subsections = await Subsection.find({ section: section._id });
     const subsectionIds = subsections.map((sub) => sub._id);
@@ -108,12 +103,16 @@ exports.getAllProductsBySection = async (req, res) => {
 
     const products = await Product.find({ category: { $in: categoryIds } });
 
-    res.status(200).json({
-      section: section.name,
-      products,
-    });
+    return {
+      success: true,
+      status: 200,
+      data: {
+        section: section.name,
+        products,
+      },
+    };
   } catch (err) {
     console.error("Error in getAllProductsBySection:", err);
-    res.status(500).json({ error: err.message });
+    return { success: false, status: 500, message: err.message };
   }
 };

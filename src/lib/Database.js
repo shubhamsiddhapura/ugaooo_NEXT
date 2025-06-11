@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const MONGO_URI = process.env.MONGO_DB;
 
 if (!MONGO_URI) {
-  throw new Error("⚠️ Please define the MONGO_DB environment variable in .env.local");
+  throw new Error("❌ MONGO_DB environment variable not set.");
 }
 
+// Global cache (for hot reload and re-use in serverless)
 let cached = global.mongoose;
 
 if (!cached) {
