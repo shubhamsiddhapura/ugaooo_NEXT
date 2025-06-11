@@ -48,7 +48,7 @@ const Home = () => {
         alt="Top Offer Banner"
         className="object-cover w-full h-auto"
       />
-
+  
       <div className="grid flex-wrap justify-center grid-cols-2 gap-4 px-3 py-6 sm:grid-cols-3 md:flex sm:gap-6 sm:px-4">
         {icons.map((item, index) => (
           <Link key={index} href="#">

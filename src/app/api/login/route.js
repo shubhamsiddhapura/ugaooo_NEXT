@@ -1,12 +1,17 @@
-const connectDB = require("../../../lib/Database");
-const { Login } = require("../../../Controller/Auth");
+// src/app/api/login/route.js
+import { Login } from "@/Controller/Auth";
+import connectDB from "@/lib/Database";
 
-export default async function handler(req, res) {
-  await connectDB(); // 🧠 Ensure DB is connected
+export async function POST(req) {
+  await connectDB();
 
-  if (req.method === "POST") {
-    return Login(req, res);
-  }
+  const body = await req.json();
+  const { status, body: resBody } = await Login(body);
 
-  res.status(405).json({ message: "Method Not Allowed" });
+  return new Response(JSON.stringify(resBody), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }

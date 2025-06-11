@@ -70,7 +70,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-3 text-white placeholder-green-400 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 text-black placeholder-green-400 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
@@ -85,7 +85,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder="********"
-              className="w-full px-4 py-3 text-white placeholder-green-400 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 text-black placeholder-green-400 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 

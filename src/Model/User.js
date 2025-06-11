@@ -1,3 +1,4 @@
+// src/Model/User.js
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -32,6 +33,7 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model('User', UserSchema);
+// ✅ Prevent OverwriteModelError
+const User = mongoose.models.User || mongoose.model('User', UserSchema);
+
 module.exports = User;
-  
