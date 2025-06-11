@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+import axios from "../../lib/axiosinstance"
 const Signup = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const Signup = () => {
     setErrorMsg("");
 
     try {
-      await axios.post("/api/Auth/register", {
+      await axios.post("/api/register", {
         Firstname: formData.firstName,
         Lastname: formData.lastName,
         email: formData.email,
